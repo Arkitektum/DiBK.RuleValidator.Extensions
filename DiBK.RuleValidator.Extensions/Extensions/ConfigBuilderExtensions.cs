@@ -1,4 +1,4 @@
-﻿using DiBK.RuleValidator.Models.Config;
+﻿using DiBK.RuleValidator.Config;
 
 namespace DiBK.RuleValidator.Extensions
 {

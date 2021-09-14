@@ -5,7 +5,7 @@
   },
   "projects": {
     "C:\\Utvikling\\DiBK\\DiBK.RuleValidator.Extensions\\DiBK.RuleValidator.Extensions\\DiBK.RuleValidator.Extensions.csproj": {
-      "version": "1.0.0",
+      "version": "1.0.1",
       "restore": {
         "projectUniqueName": "C:\\Utvikling\\DiBK\\DiBK.RuleValidator.Extensions\\DiBK.RuleValidator.Extensions\\DiBK.RuleValidator.Extensions.csproj",
         "projectName": "DiBK.RuleValidator.Extensions",
@@ -42,7 +42,7 @@
           "dependencies": {
             "DiBK.RuleValidator": {
               "target": "Package",
-              "version": "[1.0.0, )"
+              "version": "[1.0.1, )"
             },
             "MaxRev.Gdal.Core": {
               "target": "Package",

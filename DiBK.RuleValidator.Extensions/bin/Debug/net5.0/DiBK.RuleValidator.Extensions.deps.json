@@ -8,7 +8,7 @@
     ".NETCoreApp,Version=v5.0": {
       "DiBK.RuleValidator.Extensions/1.0.0": {
         "dependencies": {
-          "DiBK.RuleValidator": "1.0.0",
+          "DiBK.RuleValidator": "1.0.1",
           "MaxRev.Gdal.Core": "3.2.0.320",
           "Microsoft.Extensions.Options": "5.0.0",
           "XPath2": "1.1.2"
@@ -17,15 +17,15 @@
           "DiBK.RuleValidator.Extensions.dll": {}
         }
       },
-      "DiBK.RuleValidator/1.0.0": {
+      "DiBK.RuleValidator/1.0.1": {
         "dependencies": {
           "Microsoft.Extensions.DependencyInjection.Abstractions": "5.0.0",
           "Microsoft.Extensions.Logging.Abstractions": "5.0.0"
         },
         "runtime": {
           "lib/net5.0/DiBK.RuleValidator.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
+            "assemblyVersion": "1.0.1.0",
+            "fileVersion": "1.0.1.0"
           }
         }
       },
@@ -89,12 +89,12 @@
       "serviceable": false,
       "sha512": ""
     },
-    "DiBK.RuleValidator/1.0.0": {
+    "DiBK.RuleValidator/1.0.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-2jQSuo2vRDyjvVXu+csZ7/NVH2TYEcFrZc69H3ouJLSPc7obAXksKKGtNm5H6CKEaLf6KJsSWJQ+s/C2pHrikg==",
-      "path": "dibk.rulevalidator/1.0.0",
-      "hashPath": "dibk.rulevalidator.1.0.0.nupkg.sha512"
+      "sha512": "sha512-DKw5OdyaUcAgowR8KBLI+FVWGGtp/PgJh4ScClt/xgzvHLR/0atG8Gpzu6gFKYBH+nVrzl08/jgInGdbF6MpQQ==",
+      "path": "dibk.rulevalidator/1.0.1",
+      "hashPath": "dibk.rulevalidator.1.0.1.nupkg.sha512"
     },
     "MaxRev.Gdal.Core/3.2.0.320": {
       "type": "package",
