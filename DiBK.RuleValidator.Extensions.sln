@@ -5,8 +5,6 @@ VisualStudioVersion = 16.0.31624.102
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiBK.RuleValidator.Extensions", "DiBK.RuleValidator.Extensions\DiBK.RuleValidator.Extensions.csproj", "{4C660114-2EF3-428B-B6C8-51A39135C305}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiBK.RuleValidator", "..\DiBK.RuleValidator\DiBK.RuleValidator\DiBK.RuleValidator.csproj", "{A231E233-8B88-4CAC-BBFF-49F45D7E5F8C}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,10 +15,6 @@ Global
 		{4C660114-2EF3-428B-B6C8-51A39135C305}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4C660114-2EF3-428B-B6C8-51A39135C305}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4C660114-2EF3-428B-B6C8-51A39135C305}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A231E233-8B88-4CAC-BBFF-49F45D7E5F8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A231E233-8B88-4CAC-BBFF-49F45D7E5F8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A231E233-8B88-4CAC-BBFF-49F45D7E5F8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A231E233-8B88-4CAC-BBFF-49F45D7E5F8C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

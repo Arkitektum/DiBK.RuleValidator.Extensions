@@ -2,6 +2,19 @@
   "version": 3,
   "targets": {
     "net5.0": {
+      "DiBK.RuleValidator/1.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "5.0.0",
+          "Microsoft.Extensions.Logging.Abstractions": "5.0.0"
+        },
+        "compile": {
+          "lib/net5.0/DiBK.RuleValidator.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/DiBK.RuleValidator.dll": {}
+        }
+      },
       "MaxRev.Gdal.Core/3.2.0.320": {
         "type": "package",
         "compile": {
@@ -59,24 +72,22 @@
         "runtime": {
           "lib/netstandard2.1/XPath2.dll": {}
         }
-      },
-      "DiBK.RuleValidator/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v5.0",
-        "dependencies": {
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "5.0.0",
-          "Microsoft.Extensions.Logging.Abstractions": "5.0.0"
-        },
-        "compile": {
-          "bin/placeholder/DiBK.RuleValidator.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/DiBK.RuleValidator.dll": {}
-        }
       }
     }
   },
   "libraries": {
+    "DiBK.RuleValidator/1.0.0": {
+      "sha512": "2jQSuo2vRDyjvVXu+csZ7/NVH2TYEcFrZc69H3ouJLSPc7obAXksKKGtNm5H6CKEaLf6KJsSWJQ+s/C2pHrikg==",
+      "type": "package",
+      "path": "dibk.rulevalidator/1.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "dibk.rulevalidator.1.0.0.nupkg.sha512",
+        "dibk.rulevalidator.nuspec",
+        "lib/net5.0/DiBK.RuleValidator.dll"
+      ]
+    },
     "MaxRev.Gdal.Core/3.2.0.320": {
       "sha512": "+3IQ7ACn91Yqbcy+bdgA6FTgxppwd2LZ8Ft0s9CSz1XOQYYVAphHBHKGvsG4FzESibEkISi5U7+MmrSIm1ouJA==",
       "type": "package",
@@ -192,11 +203,6 @@
         "xpath2.1.1.2.nupkg.sha512",
         "xpath2.nuspec"
       ]
-    },
-    "DiBK.RuleValidator/1.0.0": {
-      "type": "project",
-      "path": "../../DiBK.RuleValidator/DiBK.RuleValidator/DiBK.RuleValidator.csproj",
-      "msbuildProject": "../../DiBK.RuleValidator/DiBK.RuleValidator/DiBK.RuleValidator.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -233,11 +239,7 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
-          "projectReferences": {
-            "C:\\Utvikling\\DiBK\\DiBK.RuleValidator\\DiBK.RuleValidator\\DiBK.RuleValidator.csproj": {
-              "projectPath": "C:\\Utvikling\\DiBK\\DiBK.RuleValidator\\DiBK.RuleValidator\\DiBK.RuleValidator.csproj"
-            }
-          }
+          "projectReferences": {}
         }
       },
       "warningProperties": {
@@ -250,6 +252,10 @@
       "net5.0": {
         "targetAlias": "net5.0",
         "dependencies": {
+          "DiBK.RuleValidator": {
+            "target": "Package",
+            "version": "[1.0.0, )"
+          },
           "MaxRev.Gdal.Core": {
             "target": "Package",
             "version": "[3.2.0.320, )"

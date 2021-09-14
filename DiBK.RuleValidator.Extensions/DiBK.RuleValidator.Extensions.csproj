@@ -2,16 +2,18 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <Description>Hjelpemetoder og utvidelser til DiBK.RuleValidator</Description>
+    <Authors>Direktoratet for byggkvalitet (DiBK)</Authors>
+    <Copyright>Direktoratet for byggkvalitet (DiBK)</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <RepositoryUrl>https://github.com/Arkitektum/DiBK.RuleValidator.Extensions</RepositoryUrl>
   </PropertyGroup>
   
   <ItemGroup>
+    <PackageReference Include="DiBK.RuleValidator" Version="1.0.0" />
     <PackageReference Include="MaxRev.Gdal.Core" Version="3.2.0.320" />
     <PackageReference Include="Microsoft.Extensions.Options" Version="5.0.0" />
     <PackageReference Include="XPath2" Version="1.1.2" />
-  </ItemGroup>
-  
-  <ItemGroup>
-    <ProjectReference Include="..\..\DiBK.RuleValidator\DiBK.RuleValidator\DiBK.RuleValidator.csproj" />
   </ItemGroup>
 
 </Project>

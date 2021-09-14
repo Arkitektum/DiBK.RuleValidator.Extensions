@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "wlh+pqrMCAkFSQiHt+usxW2JxnGhzciayTQbeieaItpym4HXSlaaHVVRtHWxD3dBPhx6pYZV+ZJkVk1rnV/N2g==",
+  "dgSpecHash": "sTbxfehhMLFoyBb69aupWbvLOTtQsQ/SvnoNLCGu23+MKRIKhlasuTOiIpd35bi3OhVCq/Ex/f9Q3abtjz+W8g==",
   "success": true,
   "projectFilePath": "C:\\Utvikling\\DiBK\\DiBK.RuleValidator.Extensions\\DiBK.RuleValidator.Extensions\\DiBK.RuleValidator.Extensions.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\TorAndersGustavsen\\.nuget\\packages\\dibk.rulevalidator\\1.0.0\\dibk.rulevalidator.1.0.0.nupkg.sha512",
     "C:\\Users\\TorAndersGustavsen\\.nuget\\packages\\maxrev.gdal.core\\3.2.0.320\\maxrev.gdal.core.3.2.0.320.nupkg.sha512",
     "C:\\Users\\TorAndersGustavsen\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\5.0.0\\microsoft.extensions.dependencyinjection.abstractions.5.0.0.nupkg.sha512",
     "C:\\Users\\TorAndersGustavsen\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\5.0.0\\microsoft.extensions.logging.abstractions.5.0.0.nupkg.sha512",
