@@ -1,0 +1,15 @@
+C:\Utvikling\DiBK\DiBK.RuleValidator.Extensions\DiBK.RuleValidator.Extensions\bin\Debug\net5.0\DiBK.RuleValidator.Extensions.deps.json
+C:\Utvikling\DiBK\DiBK.RuleValidator.Extensions\DiBK.RuleValidator.Extensions\bin\Debug\net5.0\DiBK.RuleValidator.Extensions.dll
+C:\Utvikling\DiBK\DiBK.RuleValidator.Extensions\DiBK.RuleValidator.Extensions\bin\Debug\net5.0\ref\DiBK.RuleValidator.Extensions.dll
+C:\Utvikling\DiBK\DiBK.RuleValidator.Extensions\DiBK.RuleValidator.Extensions\bin\Debug\net5.0\DiBK.RuleValidator.Extensions.pdb
+C:\Utvikling\DiBK\DiBK.RuleValidator.Extensions\DiBK.RuleValidator.Extensions\bin\Debug\net5.0\DiBK.RuleValidator.dll
+C:\Utvikling\DiBK\DiBK.RuleValidator.Extensions\DiBK.RuleValidator.Extensions\bin\Debug\net5.0\DiBK.RuleValidator.pdb
+C:\Utvikling\DiBK\DiBK.RuleValidator.Extensions\DiBK.RuleValidator.Extensions\obj\Debug\net5.0\DiBK.RuleValidator.Extensions.csproj.AssemblyReference.cache
+C:\Utvikling\DiBK\DiBK.RuleValidator.Extensions\DiBK.RuleValidator.Extensions\obj\Debug\net5.0\DiBK.RuleValidator.Extensions.GeneratedMSBuildEditorConfig.editorconfig
+C:\Utvikling\DiBK\DiBK.RuleValidator.Extensions\DiBK.RuleValidator.Extensions\obj\Debug\net5.0\DiBK.RuleValidator.Extensions.AssemblyInfoInputs.cache
+C:\Utvikling\DiBK\DiBK.RuleValidator.Extensions\DiBK.RuleValidator.Extensions\obj\Debug\net5.0\DiBK.RuleValidator.Extensions.AssemblyInfo.cs
+C:\Utvikling\DiBK\DiBK.RuleValidator.Extensions\DiBK.RuleValidator.Extensions\obj\Debug\net5.0\DiBK.RuleValidator.Extensions.csproj.CoreCompileInputs.cache
+C:\Utvikling\DiBK\DiBK.RuleValidator.Extensions\DiBK.RuleValidator.Extensions\obj\Debug\net5.0\DiBK.RuleValidator.Extensions.csproj.CopyComplete
+C:\Utvikling\DiBK\DiBK.RuleValidator.Extensions\DiBK.RuleValidator.Extensions\obj\Debug\net5.0\DiBK.RuleValidator.Extensions.dll
+C:\Utvikling\DiBK\DiBK.RuleValidator.Extensions\DiBK.RuleValidator.Extensions\obj\Debug\net5.0\ref\DiBK.RuleValidator.Extensions.dll
+C:\Utvikling\DiBK\DiBK.RuleValidator.Extensions\DiBK.RuleValidator.Extensions\obj\Debug\net5.0\DiBK.RuleValidator.Extensions.pdb
