@@ -12,13 +12,13 @@ namespace DiBK.RuleValidator.Extensions
         private readonly List<IndexedGeometry> _geometryIndex = new();
         private readonly object geoLock = new();
 
-        public GmlDocument(XDocument data, string fileName) : this(data, fileName, null)
+        public GmlDocument(XDocument document, string fileName) : this(document, fileName, null)
         {
         }
 
-        public GmlDocument(XDocument data, string fileName, Enum dataType) : base(data, fileName, dataType)
+        public GmlDocument(XDocument document, string fileName, object dataType) : base(document, fileName, dataType)
         {
-            _features = data.GetElements("//*:featureMember/* | //*:featureMembers/*").ToList();
+            _features = document.GetElements("//*:featureMember/* | //*:featureMembers/*").ToList();
         }
 
         public List<XElement> GetFeatures(params string[] featureNames)
@@ -57,6 +57,6 @@ namespace DiBK.RuleValidator.Extensions
             }
         }
 
-        public static GmlDocument Create(InputData data) => new(XDocument.Load(data.Stream), data.FileName);
+        public static new GmlDocument Create(InputData data) => new(XDocument.Load(data.Stream), data.FileName, data.DataType);
     }
 }
