@@ -18,6 +18,11 @@ namespace DiBK.RuleValidator.Extensions
             return element;
         }
 
+        public static string GetFeatureGmlId(XElement element)
+        {
+            return GetFeature(element)?.GetAttribute("gml:id");
+        }
+
         public static XElement GetClosestGmlElement(XElement element)
         {
             if (element.GetAttribute("gml:id") != null)
