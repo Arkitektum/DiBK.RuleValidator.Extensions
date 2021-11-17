@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Xml.Linq;
 
 namespace DiBK.RuleValidator.Extensions
@@ -59,9 +60,16 @@ namespace DiBK.RuleValidator.Extensions
             return $"{feature.GetName()} '{feature.GetAttribute("gml:id")}'";
         }
 
-        public static int GetDimensions(XElement element)
+        public static string GetNameAndId(XElement element)
         {
-            var dimensions = element.GetElement("//*[@srsDimension][1]").GetAttribute("srsDimension");
+            var gmlId = element.GetAttribute("gml:id");
+
+            return $"{element.GetName()}{(!string.IsNullOrWhiteSpace(gmlId) ? $" '{gmlId}'" : "")}";
+        }
+
+        public static int GetDimensions(GmlDocument document)
+        {
+            var dimensions = document.Document.Root.GetElement("*:boundedBy/*:Envelope").GetAttribute("srsDimension");
 
             return Convert.ToInt32(dimensions);
         }

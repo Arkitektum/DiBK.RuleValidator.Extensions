@@ -8,8 +8,8 @@ namespace DiBK.RuleValidator.Extensions
 {
     public class GmlDocument : ValidationDataElement<XDocument>, IDisposable
     {
-        private readonly List<XElement> _features;
-        private readonly List<IndexedGeometry> _geometryIndex = new();
+        private List<XElement> _features;
+        private readonly Dictionary<string, IndexedGeometry> _geometryIndex = new(25000);
         private readonly object geoLock = new();
 
         public GmlDocument(XDocument document, string fileName) : this(document, fileName, null)
@@ -18,7 +18,7 @@ namespace DiBK.RuleValidator.Extensions
 
         public GmlDocument(XDocument document, string fileName, object dataType) : base(document, fileName, dataType)
         {
-            _features = document.GetElements("//*:featureMember/* | //*:featureMembers/*").ToList();
+            LoadFeatures(document);
         }
 
         public List<XElement> GetFeatures(params string[] featureNames)
@@ -52,11 +52,25 @@ namespace DiBK.RuleValidator.Extensions
 
             foreach (var index in _geometryIndex)
             {
-                if (index.Geometry != null)
-                    index.Geometry.Dispose();
+                if (index.Value.Geometry != null)
+                    index.Value.Geometry.Dispose();
             }
         }
 
-        public static new GmlDocument Create(InputData data) => new(XDocument.Load(data.Stream), data.FileName, data.DataType);
+        private void LoadFeatures(XDocument document)
+        {
+            var localName = document.Root.Elements()
+                .Any(element => element.Name.LocalName == "featureMember") ? "featureMember" : "featureMembers";
+
+            _features = document.Root.Elements()
+                .Where(element => element.Name.LocalName == localName)
+                .SelectMany(element => element.Elements())
+                .ToList();
+        }
+
+        public static new GmlDocument Create(InputData data)
+        {
+            return new(XDocument.Load(data.Stream), data.FileName, data.DataType);
+        }
     }
 }

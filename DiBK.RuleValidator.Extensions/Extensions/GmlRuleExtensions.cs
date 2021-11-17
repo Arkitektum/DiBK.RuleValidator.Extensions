@@ -1,5 +1,4 @@
-﻿using DiBK.RuleValidator;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace DiBK.RuleValidator.Extensions
 {

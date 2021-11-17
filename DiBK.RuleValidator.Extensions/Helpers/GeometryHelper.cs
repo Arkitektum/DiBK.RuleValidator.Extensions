@@ -259,7 +259,7 @@ namespace DiBK.RuleValidator.Extensions
             }
         }
 
-        public static Geometry GetOrCreateGeometry(List<IndexedGeometry> geometryIndex, XElement geoElement, out string errorMessage)
+        public static Geometry GetOrCreateGeometry(Dictionary<string, IndexedGeometry> geometryIndex, XElement geoElement, out string errorMessage)
         {
             var gmlId = geoElement?.GetAttribute("gml:id");
 
@@ -269,9 +269,7 @@ namespace DiBK.RuleValidator.Extensions
                 return null;
             }
 
-            var indexed = geometryIndex.SingleOrDefault(index => index.GmlId == gmlId);
-
-            if (indexed != null)
+            if (geometryIndex.TryGetValue(gmlId, out var indexed))
             {
                 errorMessage = indexed.ErrorMessage;
                 return indexed.Geometry?.Clone();
@@ -289,7 +287,7 @@ namespace DiBK.RuleValidator.Extensions
                 errorMessage = exception.Message;
             }
 
-            geometryIndex.Add(new IndexedGeometry(gmlId, geometry, errorMessage));
+            geometryIndex.Add(gmlId, new IndexedGeometry(gmlId, geometry, errorMessage));
 
             return geometry?.Clone();
         }

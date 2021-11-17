@@ -136,28 +136,8 @@ namespace DiBK.RuleValidator.Extensions
 
             if (parentElement != null)
             {
-                var siblings = parentElement.XPath2Select("*:" + element.Name.LocalName);
-
-                if (siblings != null && siblings.Count() > 1)
-                {
-                    var position = 1;
-
-                    foreach (var sibling in siblings)
-                    {
-                        if (sibling == element)
-                            break;
-
-                        position++;
-                    }
-
-                    path += $"[{position}]";
-                }
-                else
-                {
-                    path += "[1]";
-                }
-
-                path = parentElement.GetXPath(namespaces) + path;
+                var position = element.ElementsBeforeSelf(element.GetName()).Count() + 1;
+                path = GetXPath(parentElement, namespaces) + $"{path}[{position}]";
             }
             else
             {
