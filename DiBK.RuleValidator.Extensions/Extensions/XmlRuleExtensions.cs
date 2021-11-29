@@ -12,7 +12,7 @@ namespace DiBK.RuleValidator.Extensions
                 Message = message,
                 FileName = fileName,
                 XPath = xPaths
-            });
+            });              
         }
     }
 }

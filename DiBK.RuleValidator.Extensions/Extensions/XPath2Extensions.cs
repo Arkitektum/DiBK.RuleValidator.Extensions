@@ -136,7 +136,7 @@ namespace DiBK.RuleValidator.Extensions
 
             if (parentElement != null)
             {
-                var position = element.ElementsBeforeSelf(element.GetName()).Count() + 1;
+                var position = element.ElementsBeforeSelf(element.Name).Count() + 1;
                 path = GetXPath(parentElement, namespaces) + $"{path}[{position}]";
             }
             else

@@ -30,22 +30,58 @@ namespace DiBK.RuleValidator.Extensions
             return point;
         }
 
-        public static Geometry CreateLine(double[][] points, int? epsg = null)
+        public static Geometry CreateLineString(double[][] points, int? epsg = null)
         {
-            var line = new Geometry(wkbGeometryType.wkbLineString);
+            var lineString = new Geometry(wkbGeometryType.wkbLineString);
 
             if (epsg.HasValue)
             {
                 var spatialReference = new SpatialReference(null);
                 spatialReference.ImportFromEPSG(epsg.Value);
 
-                line.AssignSpatialReference(spatialReference);
+                lineString.AssignSpatialReference(spatialReference);
             }
 
             for (int i = 0; i < points.Length; i++)
-                line.AddPoint(points[i][0], points[i][1], 0);
+                lineString.AddPoint(points[i][0], points[i][1], 0);
 
-            return line;
+            return lineString;
+        }
+
+        public static Geometry CreateLineString(XElement element, int? epsg = null)
+        {
+            var points = GetCoordinates(element).ToArray();
+
+            return CreateLineString(points, epsg);
+        }
+
+        public static Geometry CreatePolygon(double[][] points, int? epsg = null)
+        {
+            var polygon = new Geometry(wkbGeometryType.wkbPolygon);
+            var linearRing = new Geometry(wkbGeometryType.wkbLinearRing);
+
+            if (epsg.HasValue)
+            {
+                var spatialReference = new SpatialReference(null);
+                spatialReference.ImportFromEPSG(epsg.Value);
+
+                polygon.AssignSpatialReference(spatialReference);
+                linearRing.AssignSpatialReference(spatialReference);
+            }
+
+            foreach (var point in points)
+                linearRing.AddPoint(point[0], point[1], 0);
+
+            polygon.AddGeometry(linearRing);
+
+            return polygon;
+        }
+
+        public static Geometry CreatePolygon(XElement element, int? epsg = null)
+        {
+            var points = GetCoordinates(element).ToArray();
+
+            return CreatePolygon(points, epsg);
         }
 
         public static Geometry GetFootprintOfSolid(XElement geoElement)
