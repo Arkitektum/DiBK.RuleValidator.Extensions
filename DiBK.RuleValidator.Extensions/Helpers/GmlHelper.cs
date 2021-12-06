@@ -14,7 +14,7 @@ namespace DiBK.RuleValidator.Extensions
 
         public static string GetFeatureType(XElement element)
         {
-            return GetFeature(element)?.GetName();
+            return GetFeatureElement(element)?.GetName();
         }
 
         public static XElement GetBaseGmlElement(XElement element)
@@ -23,15 +23,20 @@ namespace DiBK.RuleValidator.Extensions
                 .FirstOrDefault(element => element.Parent.Name.Namespace != _gmlNs);
         }
 
-        public static XElement GetFeature(XElement element)
+        public static XElement GetFeatureElement(XElement element)
         {
             return element.AncestorsAndSelf()
                 .FirstOrDefault(element => element.Parent.Name.LocalName == "featureMember" || element.Parent.Name.LocalName == "featureMembers");
         }
 
+        public static XElement GetFeatureGeometryElement(XElement element)
+        {
+            return GetFeatureElement(element)?.GetElement("*/gml:*");
+        }
+
         public static string GetFeatureGmlId(XElement element)
         {
-            return GetFeature(element)?.Attribute(_gmlNs + "id")?.Value;
+            return GetFeatureElement(element)?.Attribute(_gmlNs + "id")?.Value;
         }
 
         public static XElement GetClosestGmlIdElement(XElement element)
@@ -63,7 +68,7 @@ namespace DiBK.RuleValidator.Extensions
 
         public static string GetContext(XElement element)
         {
-            var feature = GetFeature(element);
+            var feature = GetFeatureElement(element);
 
             return GetNameAndId(feature);
         }

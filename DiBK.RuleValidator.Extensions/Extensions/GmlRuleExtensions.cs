@@ -4,9 +4,9 @@ namespace DiBK.RuleValidator.Extensions
 {
     public static class GmlRuleExtensions
     {
-        public static void AddMessage(this Rule rule, string message, string fileName, IEnumerable<string> xPaths, IEnumerable<string> gmlIds)
+        public static void AddMessage(this ExecutableRule rule, string message, string fileName, IEnumerable<string> xPaths, IEnumerable<string> gmlIds)
         {
-            rule.Messages.Add(new GmlRuleMessage
+            rule.AddMessage(new GmlRuleMessage
             {
                 Message = message,
                 FileName = fileName,
@@ -15,9 +15,9 @@ namespace DiBK.RuleValidator.Extensions
             });
         }
 
-        public static void AddMessage(this Rule rule, string message, string fileName, IEnumerable<string> xPaths, IEnumerable<string> gmlIds, string zoomTo)
+        public static void AddMessage(this ExecutableRule rule, string message, string fileName, IEnumerable<string> xPaths, IEnumerable<string> gmlIds, string zoomTo)
         {
-            rule.Messages.Add(new GmlRuleMessage
+            rule.AddMessage(new GmlRuleMessage
             {
                 Message = message,
                 FileName = fileName,
