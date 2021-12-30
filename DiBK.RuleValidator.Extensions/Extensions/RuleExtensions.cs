@@ -1,4 +1,6 @@
-﻿namespace DiBK.RuleValidator.Extensions
+﻿using System.Collections.Generic;
+
+namespace DiBK.RuleValidator.Extensions
 {
     public static class RuleExtensions
     {
@@ -15,7 +17,10 @@
             rule.AddMessage(new RuleMessage
             {
                 Message = message,
-                FileName = fileName
+                Properties = new Dictionary<string, object>
+                {
+                    { "FileName", fileName }
+                }
             });
         }
     }

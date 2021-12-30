@@ -9,9 +9,12 @@ namespace DiBK.RuleValidator.Extensions
             rule.AddMessage(new XmlRuleMessage
             {
                 Message = message,
-                FileName = fileName,
-                XPath = xPaths
-            });              
+                Properties = new Dictionary<string, object>
+                {
+                    { "FileName", fileName },
+                    { "XPaths", xPaths },
+                }
+            });
         }
     }
 }

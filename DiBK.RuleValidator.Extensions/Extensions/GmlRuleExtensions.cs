@@ -6,24 +6,30 @@ namespace DiBK.RuleValidator.Extensions
     {
         public static void AddMessage(this ExecutableRule rule, string message, string fileName, IEnumerable<string> xPaths, IEnumerable<string> gmlIds)
         {
-            rule.AddMessage(new GmlRuleMessage
+            rule.AddMessage(new RuleMessage
             {
                 Message = message,
-                FileName = fileName,
-                XPath = xPaths,
-                GmlIds = gmlIds,
+                Properties = new Dictionary<string, object>
+                {
+                    { "FileName", fileName },
+                    { "XPaths", xPaths },
+                    { "GmlIds", gmlIds }
+                }
             });
         }
 
         public static void AddMessage(this ExecutableRule rule, string message, string fileName, IEnumerable<string> xPaths, IEnumerable<string> gmlIds, string zoomTo)
         {
-            rule.AddMessage(new GmlRuleMessage
+            rule.AddMessage(new RuleMessage
             {
                 Message = message,
-                FileName = fileName,
-                XPath = xPaths,
-                GmlIds = gmlIds,
-                ZoomTo = zoomTo
+                Properties = new Dictionary<string, object>
+                {
+                    { "FileName", fileName },
+                    { "XPaths", xPaths },
+                    { "GmlIds", gmlIds },
+                    { "ZoomTo", zoomTo }
+                }
             });
         }
     }

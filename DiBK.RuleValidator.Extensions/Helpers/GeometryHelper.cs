@@ -1,4 +1,6 @@
-﻿using OSGeo.OGR;
+﻿using NetTopologySuite.IO;
+using NetTopologySuite.Operation.Valid;
+using OSGeo.OGR;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -195,6 +197,21 @@ namespace DiBK.RuleValidator.Extensions
                     outsidePoints.Add(point.GetPoints());
 
             return !outsidePoints.Any();
+        }
+
+        public static (double X, double Y) DetectSelfIntersection(Geometry polygon)
+        {
+            polygon.ExportToWkt(out var wktString);
+
+            var wktReader = new WKTReader();
+            var geometry = wktReader.Read(wktString);
+            var validOperation = new IsValidOp(geometry);
+            var error = validOperation.ValidationError;
+
+            if (error != null && (error.ErrorType == TopologyValidationErrors.RingSelfIntersection || error.ErrorType == TopologyValidationErrors.SelfIntersection))
+                return (error.Coordinate.X, error.Coordinate.Y);
+
+            return default;
         }
 
         public static List<List<Geometry>> GetLineSegmentsOfPolygon(Geometry polygon)

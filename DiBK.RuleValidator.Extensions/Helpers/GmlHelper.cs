@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Xml.Linq;
@@ -10,7 +11,33 @@ namespace DiBK.RuleValidator.Extensions
         private static readonly Regex _srsNameRegex = 
             new(@"^(http:\/\/www\.opengis\.net\/def\/crs\/EPSG\/0\/|^urn:ogc:def:crs:EPSG::)(?<epsg>\d+)$", RegexOptions.Compiled);
 
-        private static readonly XNamespace _gmlNs = "http://www.opengis.net/gml/3.2";
+        private static readonly string[] _geometryElementNames = new[]
+        {
+            "CompositeCurve",
+            "CompositeSolid",
+            "CompositeSurface",
+            "Curve",
+            "GeometricComplex",
+            "Grid",
+            "LineString",
+            "MultiCurve",
+            "MultiGeometry",
+            "MultiPoint",
+            "MultiSolid",
+            "MultiSurface",
+            "OrientableCurve",
+            "OrientableSurface",
+            "Point",
+            "Polygon",
+            "PolyhedralSurface",
+            "RectifiedGrid",
+            "Solid",
+            "Surface",
+            "Tin",
+            "TriangulatedSurface"
+        };
+
+        public static readonly XNamespace GmlNs = "http://www.opengis.net/gml/3.2";
 
         public static string GetFeatureType(XElement element)
         {
@@ -20,7 +47,7 @@ namespace DiBK.RuleValidator.Extensions
         public static XElement GetBaseGmlElement(XElement element)
         {
             return element.AncestorsAndSelf()
-                .FirstOrDefault(element => element.Parent.Name.Namespace != _gmlNs);
+                .FirstOrDefault(element => element.Parent.Name.Namespace != GmlNs);
         }
 
         public static XElement GetFeatureElement(XElement element)
@@ -34,20 +61,27 @@ namespace DiBK.RuleValidator.Extensions
             return GetFeatureElement(element)?.GetElement("*/gml:*");
         }
 
+        public static IEnumerable<XElement> GetFeatureGeometryElements(XElement featureElement)
+        {
+            return featureElement.Descendants()
+                .Where(element => _geometryElementNames.Contains(element.Name.LocalName) &&
+                    element.Parent.Name.Namespace != element.Parent.GetNamespaceOfPrefix("gml"));
+        }
+
         public static string GetFeatureGmlId(XElement element)
         {
-            return GetFeatureElement(element)?.Attribute(_gmlNs + "id")?.Value;
+            return GetFeatureElement(element)?.Attribute(GmlNs + "id")?.Value;
         }
 
         public static XElement GetClosestGmlIdElement(XElement element)
         {
             return element.AncestorsAndSelf()
-                .FirstOrDefault(element => element.Attribute(_gmlNs + "id") != null);
+                .FirstOrDefault(element => element.Attribute(GmlNs + "id") != null);
         }
 
         public static string GetClosestGmlId(XElement element)
         {
-            return GetClosestGmlIdElement(element)?.Attribute(_gmlNs + "id")?.Value;
+            return GetClosestGmlIdElement(element)?.Attribute(GmlNs + "id")?.Value;
         }
 
         public static XLink GetXLink(XElement element)
@@ -75,7 +109,7 @@ namespace DiBK.RuleValidator.Extensions
 
         public static string GetNameAndId(XElement element)
         {
-            var gmlId = element.Attribute(_gmlNs + "id")?.Value;
+            var gmlId = element.Attribute(GmlNs + "id")?.Value;
 
             return $"{element.GetName()}{(!string.IsNullOrWhiteSpace(gmlId) ? $" '{gmlId}'" : "")}";
         }
@@ -87,14 +121,14 @@ namespace DiBK.RuleValidator.Extensions
             return Convert.ToInt32(dimensions);
         }
 
-        public static int? GetEpsgCode(string srsName)
+        public static string GetEpsgCode(string srsName)
         {
             var match = _srsNameRegex.Match(srsName);
 
             if (!match.Success)
                 return null;
 
-            return int.Parse(match.Groups["epsg"].Value);
+            return match.Groups["epsg"].Value;
         }
     }
 }
