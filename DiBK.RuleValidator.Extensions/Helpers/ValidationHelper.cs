@@ -2,18 +2,30 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace DiBK.RuleValidator.Extensions.Helpers
+namespace DiBK.RuleValidator.Extensions
 {
     public class ValidationHelper
     {
         public static ValidationReport CreateValidationReport(
-            object correlationId, List<Rule> rules, DisposableList<InputData> inputData, DateTime startTime, string xmlNamespace = null)
+            object correlationId, List<Rule> rules, DisposableList<InputData> inputData, string xmlNamespace, DateTime startTime)
         {
-            return CreateValidationReport(correlationId, rules, inputData.Select(data => data.FileName), startTime, xmlNamespace);
+            return CreateValidationReport(correlationId, rules, inputData.Select(data => data.FileName), xmlNamespace, startTime);
         }
 
         public static ValidationReport CreateValidationReport(
-            object correlationId, List<Rule> rules, IEnumerable<string> fileNames, DateTime startTime, string xmlNamespace = null)
+            object correlationId, List<Rule> rules, DisposableList<InputData> inputData, DateTime startTime)
+        {
+            return CreateValidationReport(correlationId, rules, inputData.Select(data => data.FileName), startTime);
+        }
+
+        public static ValidationReport CreateValidationReport(
+            object correlationId, List<Rule> rules, IEnumerable<string> fileNames, DateTime startTime)
+        {
+            return CreateValidationReport(correlationId, rules, fileNames, null, startTime);
+        }
+
+        public static ValidationReport CreateValidationReport(
+            object correlationId, List<Rule> rules, IEnumerable<string> fileNames, string xmlNamespace, DateTime startTime)
         {
             return new ValidationReport
             {
