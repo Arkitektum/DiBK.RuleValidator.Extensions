@@ -6,7 +6,7 @@ using System.Xml.Linq;
 
 namespace DiBK.RuleValidator.Extensions
 {
-    public class GmlDocument : ValidationDataElement<XDocument>, IDisposable
+    public class GmlDocument : ValidationDataElement, IDisposable
     {
         private List<XElement> _features;
         private readonly Dictionary<string, IndexedGeometry> _geometryIndex = new(25000);
