@@ -11,6 +11,7 @@ namespace DiBK.RuleValidator.Extensions
         private List<XElement> _features;
         private readonly Dictionary<string, IndexedGeometry> _geometryIndex = new(25000);
         private readonly object geoLock = new();
+        private bool _disposed = false;
 
         public GmlDocument(XDocument document, string fileName) : this(document, fileName, null)
         {
@@ -39,24 +40,6 @@ namespace DiBK.RuleValidator.Extensions
             }
         }
 
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!disposing)
-                return;
-
-            foreach (var index in _geometryIndex)
-            {
-                if (index.Value.Geometry != null)
-                    index.Value.Geometry.Dispose();
-            }
-        }
-
         private void LoadFeatures(XDocument document)
         {
             var localName = document.Root.Elements()
@@ -66,6 +49,29 @@ namespace DiBK.RuleValidator.Extensions
                 .Where(element => element.Name.LocalName == localName)
                 .SelectMany(element => element.Elements())
                 .ToList();
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!_disposed)
+            {
+                if (disposing)
+                {
+                    foreach (var index in _geometryIndex)
+                    {
+                        if (index.Value.Geometry != null)
+                            index.Value.Geometry.Dispose();
+                    }
+                }
+
+                _disposed = true;
+            }
         }
 
         public static new GmlDocument Create(InputData data)

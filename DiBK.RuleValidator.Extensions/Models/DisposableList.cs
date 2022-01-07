@@ -7,6 +7,7 @@ namespace DiBK.RuleValidator.Extensions
     public class DisposableList<T> : IList<T>, IDisposable where T : IDisposable
     {
         private readonly IList<T> _list = new List<T>();
+        private bool _disposed = false;
 
         public IEnumerator<T> GetEnumerator()
         {
@@ -80,6 +81,7 @@ namespace DiBK.RuleValidator.Extensions
             set { _list[index] = value; }
         }
 
+
         public void Dispose()
         {
             Dispose(true);
@@ -88,11 +90,16 @@ namespace DiBK.RuleValidator.Extensions
 
         protected virtual void Dispose(bool disposing)
         {
-            if (!disposing)
-                return;
+            if (!_disposed)
+            {
+                if (disposing)
+                {
+                    foreach (var item in _list)
+                        item.Dispose();
+                }
 
-            foreach (var item in _list)
-                item.Dispose();
+                _disposed = true;
+            }
         }
     }
 }

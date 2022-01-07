@@ -5,6 +5,7 @@ namespace DiBK.RuleValidator.Extensions
 {
     public class IndexedGeometry : IDisposable
     {
+        private bool _disposed = false;
         public string GmlId { get; set; }
         public Geometry Geometry { get; set; }
         public string ErrorMessage { get; set; }
@@ -24,10 +25,13 @@ namespace DiBK.RuleValidator.Extensions
 
         protected virtual void Dispose(bool disposing)
         {
-            if (!disposing || Geometry == null)
-                return;
+            if (!_disposed)
+            {
+                if (disposing && Geometry != null)
+                    Geometry.Dispose();
 
-            Geometry.Dispose();
+                _disposed = true;
+            }
         }
     }
 }

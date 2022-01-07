@@ -5,6 +5,7 @@ namespace DiBK.RuleValidator.Extensions
 {
     public class InputData : IDisposable
     {
+        private bool _disposed = false;
         public Stream Stream { get; private set; }
         public string FileName { get; private set; }
         public object DataType { get; private set; }
@@ -25,10 +26,13 @@ namespace DiBK.RuleValidator.Extensions
 
         protected virtual void Dispose(bool disposing)
         {
-            if (disposing || Stream == null)
-                return;
+            if (!_disposed)
+            {
+                if (disposing && Stream != null)
+                    Stream.Dispose();
 
-            Stream.Dispose();
+                _disposed = true;
+            }
         }
     }
 }
