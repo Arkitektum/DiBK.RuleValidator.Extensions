@@ -7,11 +7,11 @@
     <Copyright>Direktoratet for byggkvalitet (DiBK)</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryUrl>https://github.com/Arkitektum/DiBK.RuleValidator.Extensions</RepositoryUrl>
-    <Version>2.0.0-alpha.10</Version>
+    <Version>2.0.0-alpha.11</Version>
   </PropertyGroup>
   
   <ItemGroup>
-    <PackageReference Include="DiBK.RuleValidator" Version="2.0.0-alpha.7" />
+    <PackageReference Include="DiBK.RuleValidator" Version="2.0.0-alpha.8" />
     <PackageReference Include="Microsoft.Extensions.Options" Version="5.0.0" />
     <PackageReference Include="System.Collections" Version="4.3.0" />
     <PackageReference Include="XPath2" Version="1.1.2" />
