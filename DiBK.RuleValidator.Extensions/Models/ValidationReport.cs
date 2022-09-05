@@ -69,8 +69,6 @@ namespace DiBK.RuleValidator.Extensions
                                 .ToList(),
                             MessageType = rule.MessageType.ToString(),
                             Status = rule.Status.ToString(),
-                            PreCondition = rule.PreCondition,
-                            ChecklistReference = rule.ChecklistReference,
                             Description = rule.Description,
                             Source = rule.Source,
                             Documentation = rule.Documentation
