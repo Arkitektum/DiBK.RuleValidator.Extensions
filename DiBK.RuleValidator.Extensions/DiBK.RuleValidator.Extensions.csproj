@@ -11,13 +11,10 @@
   </PropertyGroup>
   
   <ItemGroup>
+    <PackageReference Include="DiBK.RuleValidator" Version="2.0.5" />
     <PackageReference Include="Microsoft.Extensions.Options" Version="6.0.0" />
     <PackageReference Include="System.Collections" Version="4.3.0" />
     <PackageReference Include="XPath2" Version="1.1.3" />
-  </ItemGroup>
-  
-  <ItemGroup>
-    <ProjectReference Include="..\..\DiBK.RuleValidator\DiBK.RuleValidator\DiBK.RuleValidator.csproj" />
   </ItemGroup>
 
 </Project>
