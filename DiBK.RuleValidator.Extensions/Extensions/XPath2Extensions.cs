@@ -131,7 +131,17 @@ namespace DiBK.RuleValidator.Extensions
 
         public static string GetXPath(this XElement element, bool namespaces = true)
         {
-            var path = "/" + (namespaces ? $"{element.GetPrefixOfNamespace(element.Name.Namespace)}:{element.Name.LocalName}" : element.Name.LocalName);
+            string elementName = element.Name.LocalName;
+
+            if (namespaces)
+            {
+                var prefix = element.GetPrefixOfNamespace(element.Name.Namespace);
+
+                if (!string.IsNullOrWhiteSpace(prefix))
+                    elementName = $"{prefix}:{elementName}";
+            }
+
+            var path = "/" + elementName;
             var parentElement = element.Parent;
 
             if (parentElement != null)

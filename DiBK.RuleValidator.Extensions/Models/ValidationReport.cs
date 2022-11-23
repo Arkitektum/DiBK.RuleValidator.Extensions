@@ -17,9 +17,9 @@ namespace DiBK.RuleValidator.Extensions
         public double TimeUsed => Math.Round(EndTime.Subtract(StartTime).TotalSeconds, 2);
 
         public static ValidationReport Create(
-            object correlationId, List<Rule> rules, DisposableList<InputData> inputData, string xmlNamespace, DateTime startTime)
+            object correlationId, List<Rule> rules, DisposableList<InputData> inputData, List<string> xmlNamespaces, DateTime startTime)
         {
-            return Create(correlationId, rules, inputData.Select(data => data.FileName), xmlNamespace, startTime);
+            return Create(correlationId, rules, inputData.Select(data => data.FileName), xmlNamespaces, startTime);
         }
 
         public static ValidationReport Create(
@@ -35,12 +35,12 @@ namespace DiBK.RuleValidator.Extensions
         }
 
         public static ValidationReport Create(
-            object correlationId, List<Rule> rules, IEnumerable<string> fileNames, string xmlNamespace, DateTime startTime)
+            object correlationId, List<Rule> rules, IEnumerable<string> fileNames, List<string> xmlNamespaces, DateTime startTime)
         {
             return new ValidationReport
             {
                 CorrelationId = correlationId as string,
-                Namespace = xmlNamespace,
+                Namespace = string.Join(", ", xmlNamespaces),
                 Errors = rules
                     .Where(rule => rule.Status == Status.FAILED)
                     .SelectMany(rule => rule.Messages)
