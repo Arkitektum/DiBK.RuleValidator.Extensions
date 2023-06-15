@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using System.Xml;
+using System.Xml.Linq;
 using System.Xml.Serialization;
 
 namespace DiBK.RuleValidator.Extensions
@@ -21,6 +22,13 @@ namespace DiBK.RuleValidator.Extensions
             {
                 throw;
             }
+        }
+
+        public static (int LineNumber, int LinePosition) GetLineInfo(XObject @object)
+        {
+            IXmlLineInfo lineInfo = @object;
+
+            return lineInfo.HasLineInfo() ? (lineInfo.LineNumber, lineInfo.LinePosition) : default;
         }
     }
 }
