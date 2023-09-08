@@ -56,6 +56,11 @@ namespace DiBK.RuleValidator.Extensions
                         {
                             Id = rule.Id,
                             Name = rule.Name,
+                            Description = rule.Description,
+                            Documentation = rule.Documentation,
+                            Status = rule.Status.ToString(),
+                            TimeUsed = rule.TimeUsed,
+                            MessageType = rule.MessageType.ToString(),
                             Messages = rule.Messages
                                 .Select(message =>
                                 {
@@ -67,11 +72,6 @@ namespace DiBK.RuleValidator.Extensions
                                     return messageDictionary;
                                 })
                                 .ToList(),
-                            MessageType = rule.MessageType.ToString(),
-                            Status = rule.Status.ToString(),
-                            Description = rule.Description,
-                            Source = rule.Source,
-                            Documentation = rule.Documentation
                         };
                     }),
                 StartTime = startTime,

@@ -157,11 +157,18 @@ namespace DiBK.RuleValidator.Extensions
             return path;
         }
 
+        public static (int LineNumber, int LinePosition) GetLineInfo(this XObject @object)
+        {
+            IXmlLineInfo lineInfo = @object;
+
+            return lineInfo.HasLineInfo() ? (lineInfo.LineNumber, lineInfo.LinePosition) : default;
+        }
+
         private static XmlNamespaceManager GetNamespaces(string xPath)
         {
             var namespaceManager = new XmlNamespaceManager(new NameTable());
 
-            foreach (Match match in _namespaceRegex.Matches(xPath))
+            foreach (Match match in _namespaceRegex.Matches(xPath).Cast<Match>())
             {
                 var prefix = match.Groups["prefix"].Value;
 
